@@ -1,0 +1,15 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FICO Score Calculator Home</title>
+    <link rel="stylesheet" href="{% static 'calculator/style.css' %}">
+</head>
+<body>
+    <div class="container home-container">
+        <img src="{% static 'calculator/score-graphic.png' %}" alt="FICO Calculator" class="home-image">
+        <a href="{% url 'payment_history' %}" class="home-btn">Calculate Your Score</a>
+    </div>
+</body>
+</html>

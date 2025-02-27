@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Credit Account Details</title>
+    <link rel="stylesheet" href="{% static 'calculator/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h2>Enter Details for Each Account</h2>
+        <form method="post">
+            {% csrf_token %}
+            {% for detail, formset in zipped %}
+                <h3>{{ detail.credit_type|title }} Accounts ({{ detail.account_count }})</h3>
+                {{ formset.management_form }}
+                {% for form in formset %}
+                    <fieldset>
+                        <legend>{{ detail.credit_type|title }} Account {{ forloop.counter }}</legend>
+                        {{ form.as_p }}
+                    </fieldset>
+                {% endfor %}
+            {% endfor %}
+            <div class="button-container">
+                <button type="submit">Next: New Credit Data</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

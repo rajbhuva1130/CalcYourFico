@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FICO Score Results</title>
+    <link rel="stylesheet" href="{% static 'calculator/style.css' %}">
+    <style>
+        /* Centering the home button container */
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="text-align: center;">========= FICO Score Report =========</h1>
+        <p style="text-align: center;">Estimated FICO Score: <strong>{{ fico_score }}</strong></p>
+        <p style="text-align: center;">Estimated FICO Range: <strong>{{ fico_min }} - {{ fico_max }}</strong></p>
+        <h2>Component Breakdown:</h2>
+        <hr>
+        <ul>
+            {% for component, score in component_scores.items %}
+                <li>{{ component }}: {{ score }}/100</li>
+            {% endfor %}
+        </ul>
+        <h3>Credit Profile Summary:</h3>
+        <hr>
+        <p>Total Accounts: {{ total_accounts }}</p>
+        <p>Credit Types: {{ credit_types }}</p>
+        <p>Credit Utilization: {{ credit_utilization }}%</p>
+        <p>Average Account Age: {{ avg_age }} years</p>
+        
+    </div>
+    <div class="button-container">
+        <a href="{% url 'home' %}" class="home-btn">Home</a>
+    </div>
+</body>
+</html>

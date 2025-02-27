@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Enhanced FICO Score Calculator - Payment History</title>
+    <link rel="stylesheet" href="{% static 'calculator/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Enhanced FICO Score Calculator</h1>
+        <hr>
+        <h2>---- Payment History Data ----</h2>
+        <p>(Enter 0 if none)</p>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="button-container">
+                <button type="submit">Next: Credit Account Information</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
